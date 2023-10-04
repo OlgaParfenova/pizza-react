@@ -24,3 +24,17 @@
   left: 14px;
   top: 12px;
 }
+
+.clearIcon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+  position: absolute;
+  right: 15px;
+  top: 12px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
