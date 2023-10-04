@@ -15,10 +15,11 @@ export const HomePage = () => {
         setItems(arr);
         setIsLoading(false);
       });
+    window.scrollTo(0, 0);
   }, []);
 
   return (
-    <>
+    <div className='container'>
       <div className='content__top'>
         <Categories />
         <Sort />
@@ -29,6 +30,6 @@ export const HomePage = () => {
           ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
           : items.map((element) => <PizzaBlock key={element.title} {...element} />)}
       </div>
-    </>
+    </div>
   );
 };
