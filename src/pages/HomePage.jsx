@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import { Categories } from '../components/Categories';
 import { Sort } from '../components/Sort';
 import { PizzaBlock, Skeleton } from '../components/PizzaBlock';
 import { Pagination } from '../components/Pagination';
+import { SearchContext } from '../App';
 
-export const HomePage = ({ searchValue }) => {
+export const HomePage = () => {
+  const { searchValue } = useContext(SearchContext);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);

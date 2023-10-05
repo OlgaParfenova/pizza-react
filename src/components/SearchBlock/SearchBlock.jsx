@@ -1,6 +1,12 @@
+import { useContext } from 'react';
+
+import { SearchContext } from '../../App';
+
 import styles from './SearchBlock.module.scss';
 
-export const SearchBlock = ({ searchValue, setSearchValue }) => {
+export const SearchBlock = () => {
+  const { searchValue, setSearchValue } = useContext(SearchContext);
+
   return (
     <div className={styles.root}>
       <svg className={styles.icon} data-testid='SearchIcon'>

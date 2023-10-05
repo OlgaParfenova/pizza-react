@@ -4,7 +4,7 @@ import { SearchBlock } from './SearchBlock';
 
 import logoSvg from '../assets/img/pizza-logo.svg';
 
-export const Header = ({ searchValue, setSearchValue }) => {
+export const Header = () => {
   return (
     <div className='header'>
       <div className='container'>
@@ -17,7 +17,7 @@ export const Header = ({ searchValue, setSearchValue }) => {
             </div>
           </div>
         </Link>
-        <SearchBlock searchValue={searchValue} setSearchValue={setSearchValue} />
+        <SearchBlock />
         <div className='header__cart'>
           <Link to='/cart' className='button button--cart'>
             <span>520 ₽</span>
