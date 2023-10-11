@@ -1,18 +1,25 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-export const Sort = ({ sortType, handleChangeSort }) => {
+import { activateSort } from '../redux/slices/filterSlice';
+
+const sortList = [
+  { name: 'убыванию популярности', sortProperty: 'rating' },
+  { name: 'возрастанию популярности', sortProperty: '-rating' },
+  { name: 'убыванию цены', sortProperty: 'price' },
+  { name: 'возрастанию цены', sortProperty: '-price' },
+  { name: 'алфавиту Я-А', sortProperty: 'title' },
+  { name: 'алфавиту А-Я', sortProperty: '-title' },
+];
+
+export const Sort = () => {
+  const dispatch = useDispatch();
+  const sort = useSelector((state) => state.filterReducer.sort);
+
   const [isVisible, setIsVisible] = useState(false);
-  const sortList = [
-    { name: 'убыванию популярности', sortProperty: 'rating' },
-    { name: 'возрастанию популярности', sortProperty: '-rating' },
-    { name: 'убыванию цены', sortProperty: 'price' },
-    { name: 'возрастанию цены', sortProperty: '-price' },
-    { name: 'алфавиту Я-А', sortProperty: 'title' },
-    { name: 'алфавиту А-Я', sortProperty: '-title' },
-  ];
 
-  const handleClickList = (index) => () => {
-    handleChangeSort(index);
+  const handleClickList = (obj) => () => {
+    dispatch(activateSort(obj));
     setIsVisible(!isVisible);
   };
 
@@ -31,7 +38,7 @@ export const Sort = ({ sortType, handleChangeSort }) => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setIsVisible(!isVisible)}>{sortType.name}</span>
+        <span onClick={() => setIsVisible(!isVisible)}>{sort.name}</span>
       </div>
       {isVisible && (
         <div className='sort__popup'>
@@ -40,7 +47,7 @@ export const Sort = ({ sortType, handleChangeSort }) => {
               <li
                 key={index}
                 onClick={handleClickList(element)}
-                className={sortType.sortProperty === element.sortProperty ? 'active' : ''}>
+                className={sort.sortProperty === element.sortProperty ? 'active' : ''}>
                 {element.name}
               </li>
             ))}
