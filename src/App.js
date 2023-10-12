@@ -1,12 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState, createContext } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 
 import { Header } from '../src/components/Header';
 import { HomePage } from '../src/pages/HomePage';
 import { NotFoundPage } from '../src/pages/NotFoundPage';
 import { CartPage } from './pages/CartPage';
-import { decrement, increment } from './redux/slices/filterSlice';
 
 import './scss/app.scss';
 
